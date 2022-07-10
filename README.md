@@ -342,9 +342,75 @@ Finally choose Create subnet.
 
 
   
+  ## Auto assign Public Ipv4 adress
+  
+- Select the checkbox next to Public Subnet 1 after the subnets have been created. 
+- Choose Actions and Modify auto-assign IP settings. 
+- Under Auto-assign IPv4, 
+- choose Enable auto-assign public IPv4 address. 
+- Choose Save. 
+
+- De-select Public Subnet 1. 
+- Select the checkbox next to Public Subnet 2. 
+- Choose Actions and Modify auto-assign IP settings. 
+- Under Auto-assign IPv4, 
+- choose Enable auto-assign public IPv4 address. 
+- Choose Save.
+
+
+> Now we have created the VPC and Subnets we need to route the traffic through subnets for which we are going to use `Route Tables` but before routing the traffic we need to pass the internet for the vpc this will be done by the `Internet Gateway`
+
+## About Internet Gateway
+
+Internet Gateway
+
+To enable internet connectivity for your VPC, you need to create an internet gateway. Think of this gateway as similar to a modem. Just as a modem connects your computer to the internet, the internet gateway connects your VPC to the internet. Unlike your modem at home, which sometimes goes down or offline, an internet gateway is highly available and scalable. After you create an internet gateway, you then need to attach it to your VPC.
 
 
 
+## Creating Internet Gateway
+
+- Choose Internet Gateways in the left panel. 
+- Choose Create internet gateway. 
+- Under Name tag paste in app-igw. 
+- Choose Create internet gateway. 
+
+> Now we have created the internet gateway we need to add this gateway to the VPC that we have created Earlier.
+
+- Choose Actions and Attach to VPC. 
+- Under Available VPCs choose the `app-vpc`. 
+- Choose Attach internet gateway. 
+
+
+## About Route Table
+
+- The Main Route Table
+  - When you create a VPC, AWS creates a route table called the main route table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed. AWS assumes that when you create a new VPC with subnets, you want traffic to flow between them. Therefore, the default configuration of the main route table is to allow traffic between all subnets in the local network. 
+There are two main parts to this route table.
+
+- Custom Route Tables
+  - While the main route table controls the routing for your VPC, you may want to be more granular about how you route your traffic for specific subnets. For example, your application may consist of a frontend and a database. You can create separate subnets for these resources and provide different routes for each of them.
+
+- If you associate a custom route table with a subnet, the subnet will use it instead of the main route table. By default, each custom route table you create will have the local route already inside it, allowing communication to flow between all resources and subnets inside the VPC.
+
+<img width="804" alt="69m1UQ52QS6ZtVEOdsEuvg_6d98f06359fd4ce9bd3233180011cf7d_Screen-Shot-2021-01-19-at-1 24 00-PM (1)" src="https://user-images.githubusercontent.com/72511276/178145093-292c92e3-fd74-490c-b336-20c94e857829.png">
+
+
+## Creating a Route Table
+
+> Things to do 
+
+- we are going to create two route tables.
+  - one for the public subnets(app-routetable-public) which will connect tp public subnet 1 and public 1b
+    - As this the 
+  - one for the private subnets(app-routetable-private) which will connect to private subnet 1 and private subnet 2
+
+Choose Route Tables at the left. Choose Create route table. Under Name tag, paste in app-routetable-public. Under VPC, choose the app-vpc. Choose Create. Choose Close. 
+Select the app-routetable-public from the list. Choose the Routes tab. Choose Edit routes. 
+Choose Add route. For Destination, paste in 0.0.0.0/0. For Target choose Internet Gateway. Choose the app-igw you set up in the VPC section. Select Save routes. Choose Close. 
+Choose the Subnet Associations tab. Choose Edit subnet associations. Select the 2 Public subnets (Public Subnet 1 & Public Subnet 2) you created in the Subnet section. Choose Save. 
+Choose Create route table.  Under Name tag paste in app-routetable-private. Under VPC chose the app-vpc. Choose Create. Choose Close. 
+Deselect the app-routetable-public. Select the app-routetable-private from the list. Choose the Subnet Associations tab. Choose Edit subnet associations. Select the 2 Private subnets (Private Subnet 1 & Private Subnet 2) you created in the Subnet section. Choose Save. 
 
 ### Stage-4 Creating an S3 Bucket
 
