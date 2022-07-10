@@ -323,46 +323,63 @@ Next, you will terminate the instance. Again, select the checkbox next to the in
 - Choose Subnets at the left. 
 - Choose Create subnet. 
 
+![image](https://user-images.githubusercontent.com/72511276/178146870-d225dab6-d34a-4cb7-bbb3-43cb4defcff8.png)
+
 - Under VPC ID, 
 - select the app-vpc from the drop down list. 
 
-- Under Subnet settings and Subnet name, paste in Public Subnet 1.  
-- Under Availability Zone, choose the 1st AZ i.e us-east-1a.  
-- For the IPv4 CIDR block paste in 10.1.1.0/24. 
+![image](https://user-images.githubusercontent.com/72511276/178147036-4f77809f-e603-4f2c-bea6-39a3b62fd941.png)
+
+
+- Under Subnet settings and Subnet name, paste in `Public Subnet 1`.  
+- Under Availability Zone, choose the 1st AZ i.e `us-east-1a`.  
+- For the IPv4 CIDR block paste in `10.1.1.0/24`. 
 - Choose Add new subnet. 
 
+![image](https://user-images.githubusercontent.com/72511276/178147098-e950997a-c432-477d-9ee6-b22a0fa0d249.png)
 
-
-
-- Under Subnet settings and Subnet name, paste in Public Subnet 2.  
-- Under Availability Zone, choose the 2nd AZ i.e is us-east-1b.  
-- For the IPv4 CIDR block paste in 10.1.2.0/24. 
+- Under Subnet settings and Subnet name, paste in `Public Subnet 2`.  
+- Under Availability Zone, choose the 2nd AZ i.e is `us-east-1b`.  
+- For the IPv4 CIDR block paste in `10.1.2.0/24`. 
 - Choose Add new subnet. 
 
+![image](https://user-images.githubusercontent.com/72511276/178147155-1d167a9c-ff15-4691-adc3-994d05d71cd0.png)
 
 
-- Under Subnet settings and Subnet name, paste in Private Subnet 1.  
-- Under Availability Zone, choose the 1st AZ i.e is us-east-1a.  
-- For the IPv4 CIDR block paste in 10.1.3.0/24. 
+- Under Subnet settings and Subnet name, paste in `Private Subnet 1`.  
+- Under Availability Zone, choose the 1st AZ i.e is `us-east-1a`.  
+- For the IPv4 CIDR block paste in `10.1.3.0/24`. 
 - Choose Add new subnet. 
 
+![image](https://user-images.githubusercontent.com/72511276/178147220-7f89aac1-f64e-4d6f-89ab-00b73767f03a.png)
 
-- Under Subnet settings and Subnet name, paste in Private Subnet 2.  
-- Under Availability Zone, choose the 1nd AZ i.e is us-east-1a.  
-- For the IPv4 CIDR block paste in 10.1.4.0/24. 
+
+- Under Subnet settings and Subnet name, paste in `Private Subnet 2`.  
+- Under Availability Zone, choose the 1nd AZ i.e is `us-east-1a`.  
+- For the IPv4 CIDR block paste in `10.1.4.0/24`. 
 
 Finally choose Create subnet. 
 
+- After creating the Subnets you will be redirected to the subnet Dashboard. which looks somthing like this.
+
+![image](https://user-images.githubusercontent.com/72511276/178147317-5de1750f-f705-4016-880c-966ce043b0d0.png)
 
   
   ## Auto assign Public Ipv4 adress
   
+  ![image](https://user-images.githubusercontent.com/72511276/178147360-0f2ac690-fcce-4eb4-87f2-856db98ade26.png)
+  
 - Select the checkbox next to Public Subnet 1 after the subnets have been created. 
-- Choose Actions and Modify auto-assign IP settings. 
+- Choose Actions and click on edit subnet option
+
+![image](https://user-images.githubusercontent.com/72511276/178147440-ef39cb07-780b-4ae0-a7e4-5dd80fe48378.png)
+
+- Modify auto-assign IP settings. 
 - Under Auto-assign IPv4, 
 - choose Enable auto-assign public IPv4 address. 
 - Choose Save. 
 
+Do the same for the public subnet 2
 - De-select Public Subnet 1. 
 - Select the checkbox next to Public Subnet 2. 
 - Choose Actions and Modify auto-assign IP settings. 
@@ -383,14 +400,26 @@ To enable internet connectivity for your VPC, you need to create an internet gat
 
 ## Creating Internet Gateway
 
+![image](https://user-images.githubusercontent.com/72511276/178147540-d0c62a44-49dd-4599-9312-c06287dfc4e4.png)
+
 - Choose Internet Gateways in the left panel. 
 - Choose Create internet gateway. 
-- Under Name tag paste in app-igw. 
+
+![image](https://user-images.githubusercontent.com/72511276/178147620-e941c890-78d2-49cc-9059-f0fef804b3dd.png)
+
+
+- Under Name tag paste in `app-igw`. 
 - Choose Create internet gateway. 
 
 > Now we have created the internet gateway we need to add this gateway to the VPC that we have created Earlier.
 
+![image](https://user-images.githubusercontent.com/72511276/178147665-3e136444-ed92-4716-9011-cb5532a09c62.png)
+
 - Choose Actions and Attach to VPC. 
+
+![image](https://user-images.githubusercontent.com/72511276/178147735-de3399b5-15dc-4d2d-9d26-554aa68f48e9.png)
+
+
 - Under Available VPCs choose the `app-vpc`. 
 - Choose Attach internet gateway. 
 
@@ -462,6 +491,7 @@ There are two main parts to this route table.
 - Choose Edit subnet associations. 
 - Select the 2 Private subnets (Private Subnet 1 & Private Subnet 2) you created in the Subnet section. 
 - Choose Save.
+
 
 
 
