@@ -273,12 +273,21 @@ Next, you will terminate the instance. Again, select the checkbox next to the in
 
 ## Creating a VPC
 
+![image](https://user-images.githubusercontent.com/72511276/178145841-97abe546-bc0c-40a6-81ca-d4f5dc5db4ba.png)
+
 - Search for VPC in the search bar at the top. Choose VPC.
+- 
+![image](https://user-images.githubusercontent.com/72511276/178145792-6501b8c7-ac07-40d9-9a2e-ec1ba71c1453.png)
 
 - Choose Your VPCs in the left panel. 
 - Choose Create VPC. 
+
+![image](https://user-images.githubusercontent.com/72511276/178145931-8717d38a-b9c4-47a1-b4a2-463c0fae536d.png)
+
 - Under Name tag paste in` app-vpc`.
-- For the IPv4 CIDR block paste in `10.1.0.0/16`. Choose Create VPC. 
+- For the IPv4 CIDR block paste in `10.1.0.0/16`.
+- Choose the Tenancy as Default.
+- Choose Create VPC. 
 
 
 
@@ -309,8 +318,12 @@ Next, you will terminate the instance. Again, select the checkbox next to the in
   - Two Private Subnets (Private subnet in 1st AZ,Private subnet in 2nd AZ )
   - Auto Assign the public Ip address to the both public subnets. 
 
+![image](https://user-images.githubusercontent.com/72511276/178146022-78883be3-05c6-4a3b-8a19-97467602dbcc.png)
+
 - Choose Subnets at the left. 
-- Choose Create subnet. Under VPC ID, 
+- Choose Create subnet. 
+
+- Under VPC ID, 
 - select the app-vpc from the drop down list. 
 
 - Under Subnet settings and Subnet name, paste in Public Subnet 1.  
