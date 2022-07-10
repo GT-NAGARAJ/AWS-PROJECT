@@ -273,6 +273,79 @@ Next, you will terminate the instance. Again, select the checkbox next to the in
 
 ## Creating a VPC
 
+- Search for VPC in the search bar at the top. Choose VPC.
+
+- Choose Your VPCs in the left panel. 
+- Choose Create VPC. 
+- Under Name tag paste in` app-vpc`.
+- For the IPv4 CIDR block paste in `10.1.0.0/16`. Choose Create VPC. 
+
+
+
+## About the Subnets
+
+> After you create your VPC, you need to create subnets inside of this network. Think of subnets as smaller networks inside your base network—or virtual area networks (VLANs) in a traditional, on-premises network. In an on-premises network, the typical use case for subnets is to isolate or optimize network traffic. In AWS, subnets are used for high availability and providing different connectivity options for your resources.
+
+- When you create a subnet, you need to choose three settings.
+
+  - The  VPC you want your subnet to live in, in this case VPC (10.0.0.0/16).
+
+  - The Availability  Zone you want your subnet to live in, in this case AZ1.
+
+  - A CIDR  block for your subnet, which must be a subset of the VPC CIDR block, in  this case 10.0.0.0/24.
+
+
+- When you launch an EC2 instance, you launch it inside a subnet, which will be located inside the Availability Zone you choose.
+
+
+## Creating the Subnets
+
+<img width="685" alt="D5Pd-oYISyCT3fqGCLsgxg_de756a8af57b48c0a4d99508da6f6218_Screen-Shot-2021-01-19-at-1 07 15-PM (1)" src="https://user-images.githubusercontent.com/72511276/178144323-538ea6c8-252e-471d-9f65-1f4964c36ca8.png">
+
+> Things to do
+
+- Creating 4 Subnets
+  - Two Public subnets (Public subnet in 1st AZ,Public subnet in 2nd AZ )
+  - Two Private Subnets (Private subnet in 1st AZ,Private subnet in 2nd AZ )
+  - Auto Assign the public Ip address to the both public subnets. 
+
+- Choose Subnets at the left. 
+- Choose Create subnet. Under VPC ID, 
+- select the app-vpc from the drop down list. 
+
+- Under Subnet settings and Subnet name, paste in Public Subnet 1.  
+- Under Availability Zone, choose the 1st AZ i.e us-east-1a.  
+- For the IPv4 CIDR block paste in 10.1.1.0/24. 
+- Choose Add new subnet. 
+
+
+
+
+- Under Subnet settings and Subnet name, paste in Public Subnet 2.  
+- Under Availability Zone, choose the 2nd AZ i.e is us-east-1b.  
+- For the IPv4 CIDR block paste in 10.1.2.0/24. 
+- Choose Add new subnet. 
+
+
+
+- Under Subnet settings and Subnet name, paste in Private Subnet 1.  
+- Under Availability Zone, choose the 1st AZ i.e is us-east-1a.  
+- For the IPv4 CIDR block paste in 10.1.3.0/24. 
+- Choose Add new subnet. 
+
+
+- Under Subnet settings and Subnet name, paste in Private Subnet 2.  
+- Under Availability Zone, choose the 1nd AZ i.e is us-east-1a.  
+- For the IPv4 CIDR block paste in 10.1.4.0/24. 
+
+Finally choose Create subnet. 
+
+
+  
+
+
+
+
 ### Stage-4 Creating an S3 Bucket
 
 
