@@ -231,26 +231,47 @@ Click on `Add tag` button to add a tag
 - After the Status check are passed you can connect to your instances.
 
 
-Next to Name, choose the checkbox to select the instance.  Under the Details tab, copy down the Public IPv4 address. 
+- Next to Name, choose the checkbox to select the instance.
+- Under the Details tab, copy down the Public IPv4 address. 
 
 Paste it into a new browser tab. You should see a Employee Directory placeholder. Right now you will not be able to interact with it as it's not currently connected to our DynamoDB database. 
 
 Congrats! You've successfully created an EC2 instance hosting the employee directory application. After you've finished looking around, it's time to stop and terminate your instance, so that you don't incur future costs. 
+
+
 
 Back in the AWS Management Console, the employee-directory-app should still be selected. Now, choose Instance state at the top and choose Stop instance. Choose Stop. The Instance state will eventually go into the Stopped state. 
 
 Next, you will terminate the instance. Again, select the checkbox next to the instance Name. Choose Instance state and choose Terminate instance. Choose Terminate. 
 
 
-
-
-
-
-
-
-
 ### Stage-3 Creating a VPC
 
+## Table of Content
+
+- [About the VPC](#about-the-vpc)
+  - [Creating a VPC](#creating-a-vpc)
+- [About the Subnets](#about-the-subnets)
+  - [Creating the Subnets](#creating-the-subnets)
+- [About Internet Gateway](#about-internet-gateway)
+  - [Creating Internet Gateway](#creating-internet-gateway)
+- [About Route Table](#about-route-table)
+  - [Creating a Route Table](#creating-a-route-able)
+    
+
+## About the VPC
+
+- A VPC is an isolated network you create in the AWS cloud, similar to a traditional network in a data center. When you create a VPC, you need to choose three main things. 
+
+  - The  name of your VPC.
+
+  - A Region for  your VPC to live in. Each VPC spans multiple Availability Zones within the  Region you choose.
+
+  - A IP range for your VPC in CIDR notation. This determines the size of your network. Each VPC can  have up to four /16 IP ranges.
+
+![kE8VCk32RPiPFQpN9kT4Lw_af022fa3bad0433d9b8b3e6d90064abb_introVPC_1 (1)](https://user-images.githubusercontent.com/72511276/178143410-eeee7d2b-b898-42bf-921a-f7bb24c1a320.jpeg)
+
+## Creating a VPC
 
 ### Stage-4 Creating an S3 Bucket
 
