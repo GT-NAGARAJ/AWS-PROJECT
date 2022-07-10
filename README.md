@@ -402,15 +402,55 @@ There are two main parts to this route table.
 
 - we are going to create two route tables.
   - one for the public subnets(app-routetable-public) which will connect tp public subnet 1 and public 1b
-    - As this the 
+    - As this is the public subnet we are going to route `igw` to this route table.
   - one for the private subnets(app-routetable-private) which will connect to private subnet 1 and private subnet 2
+    - As this is the private subnet we are `notgoing to route`the `igw` to this route table.
 
-Choose Route Tables at the left. Choose Create route table. Under Name tag, paste in app-routetable-public. Under VPC, choose the app-vpc. Choose Create. Choose Close. 
-Select the app-routetable-public from the list. Choose the Routes tab. Choose Edit routes. 
-Choose Add route. For Destination, paste in 0.0.0.0/0. For Target choose Internet Gateway. Choose the app-igw you set up in the VPC section. Select Save routes. Choose Close. 
-Choose the Subnet Associations tab. Choose Edit subnet associations. Select the 2 Public subnets (Public Subnet 1 & Public Subnet 2) you created in the Subnet section. Choose Save. 
-Choose Create route table.  Under Name tag paste in app-routetable-private. Under VPC chose the app-vpc. Choose Create. Choose Close. 
-Deselect the app-routetable-public. Select the app-routetable-private from the list. Choose the Subnet Associations tab. Choose Edit subnet associations. Select the 2 Private subnets (Private Subnet 1 & Private Subnet 2) you created in the Subnet section. Choose Save. 
+## public route table
+- Choose Route Tables at the left. 
+- Choose Create route table. 
+- Under Name tag, paste in app-routetable-public.
+- Under VPC, choose the app-vpc. Choose Create. 
+- Choose Close. 
+
+## private route table
+
+
+- Choose Create route table. 
+- Under Name tag, paste in app-routetable-private.
+- Under VPC, choose the app-vpc. Choose Create. 
+
+> As of now we have created the route tables we need to edit the routes and associate the subnets to  route tables
+
+
+## Routing
+
+- Select the app-routetable-public from the list. 
+- Choose the Routes tab. 
+- Choose Edit routes. 
+- Choose Add route. 
+- For Destination, paste in 0.0.0.0/0. For Target choose Internet Gateway. 
+- Choose the app-igw you set up in the VPC section. 
+- Select Save routes. 
+- Choose Close. 
+
+
+## Subnet Associations
+
+- Choose the Subnet Associations tab. 
+- Choose Edit subnet associations. 
+- Select the 2 Public subnets (Public Subnet 1 & Public 1b) you created in the Subnet section. 
+- Choose Save. 
+
+
+- Deselect the app-routetable-public. 
+- Select the app-routetable-private from the list. 
+- Choose the Subnet Associations tab. 
+- Choose Edit subnet associations. 
+- Select the 2 Private subnets (Private Subnet 1 & Private Subnet 2) you created in the Subnet section. 
+- Choose Save.
+
+
 
 ### Stage-4 Creating an S3 Bucket
 
