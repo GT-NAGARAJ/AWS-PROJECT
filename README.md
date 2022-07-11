@@ -78,9 +78,9 @@ In order to connect this serves to the compute instances we are going to setup a
 To host a Employee Directory application we need to setup a compute enginne in this case we are using a `EC2 Virtual machine`.
 
 > Types of compute services
-- Instances (Virtual Machines) *Ex* - EC2
-- Serverless *Ex* - Lambda
-- Containers *Ex* - ECS and EKS
+- Instances (Virtual Machines) Ex - EC2
+- Serverless Ex - Lambda
+- Containers Ex - ECS and EKS
 
 -----
 #### Setup a EC2 Instance
@@ -92,7 +92,7 @@ Every EC2 instances needs to exist inside a Network and on AWS. this are called 
 
 ![image](https://user-images.githubusercontent.com/72511276/178132681-5c904a68-e2e3-424a-b8f7-9cda3b5da2ac.png)
 
-**NOTE :**Keep an Eye on the region your are  lanching your services. (US East (N. Virginia))
+**NOTE**: Keep an Eye on the region your are  lanching your services. (US East (N. Virginia))
 
 - Click on Instances to lanch the instance 
 
@@ -251,11 +251,11 @@ An EC2 instance transitions between different states from the moment you create 
 - At this stage, the instance is preparing to enter the running state. 
 - Pending is where AWS performs all actions needed to set up an instance, such as copying the AMI content to the root device and allocating the necessary networking components.
 
-> When your instance is running (2).
+> When your instance is `running (2)`.
 
 - It's ready to use. This is also the stage where billing begins. As soon as an instance is running, you are then able to take other actions on the instance, such as reboot, terminate, stop, and stop-hibernate.
 
-> When you reboot an instance (3).
+> When you `reboot an instance (3)`.
 
 - It’s different than performing a stop action and then a start action. 
 - Rebooting an instance is equivalent to rebooting an operating system. 
@@ -263,13 +263,13 @@ An EC2 instance transitions between different states from the moment you create 
 
 It typically takes a few minutes for the reboot to complete.
 
-> When you stop and start an instance (4)
+> When you `stop` and `start` an instance (4)
 
 - Your instance may be placed on a new underlying physical server. 
 - Therefore, you lose any data on the instance store that were on the previous host computer. 
 - When you stop an instance, the instance gets a new public IP address but maintains the same private IP address.
 
-> When you terminate an instance (5).
+> When you `terminate an instance` (5).
 
 - The instance store are erased, and you lose both the public IP address and private IP address of the machine. 
 - Termination of an instance means you can no longer access the machine.
