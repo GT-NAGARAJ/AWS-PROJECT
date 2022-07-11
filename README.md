@@ -478,7 +478,8 @@ There are two main parts to this route table.
 
 ## Routing
 
-- Select the app-routetable-public from the list. 
+- Select the `app-routetable-public` from the list. 
+- 
 - Choose the Routes tab. 
 - Choose Edit routes. 
 - Choose Add route. 
