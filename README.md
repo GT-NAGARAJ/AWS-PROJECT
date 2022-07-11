@@ -296,6 +296,7 @@ It typically takes a few minutes for the reboot to complete.
 
 ![image](https://user-images.githubusercontent.com/72511276/178266376-abbdc283-9594-48aa-bd44-fad683ff21b3.png)
 
+![image](https://user-images.githubusercontent.com/72511276/178271777-034e61ad-2dd9-4d8d-bf33-74fd26a9343d.png)
 
 
 ### Stage-3 Creating a VPC
