@@ -489,15 +489,25 @@ There are two main parts to this route table.
 ![image](https://user-images.githubusercontent.com/72511276/178188833-f6e5e8cf-aa5f-4758-b400-1351a6afa085.png)
 
 - For Destination, paste in `0.0.0.0/0.` For Target choose `Internet Gateway`. 
+
+![image](https://user-images.githubusercontent.com/72511276/178214070-a295face-1ca7-4996-9ec0-d382a207a7df.png)
+
 - Choose the app-igw you set up in the VPC section. 
 - Select Save routes. 
 - Choose Close. 
 
+> Now as we connecred the flow of internet to the app-routable-public we need to associate the routable to the subnets 
 
 ## Subnet Associations
 
+In the Route table dashboard you will find the subnet association besides routes
+
+![image](https://user-images.githubusercontent.com/72511276/178215039-3b68b555-71db-49fb-b74c-ff5c28d00aea.png)
+
 - Choose the Subnet Associations tab. 
 - Choose Edit subnet associations. 
+
+
 - Select the 2 Public subnets (Public Subnet 1 & Public 1b) you created in the Subnet section. 
 - Choose Save. 
 
