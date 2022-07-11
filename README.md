@@ -239,10 +239,47 @@ Explicit (i.e defined by the user )
 Congrats! You've successfully created an EC2 instance hosting the employee directory application. After you've finished looking around, it's time to stop and terminate your instance, so that you don't incur future costs. 
 
 
+### Explore the EC2 Instance Lifecycle.
 
-Back in the AWS Management Console, the employee-directory-app should still be selected. Now, choose Instance state at the top and choose Stop instance. Choose Stop. The Instance state will eventually go into the Stopped state. 
+An EC2 instance transitions between different states from the moment you create it all the way through to its termination.
 
-Next, you will terminate the instance. Again, select the checkbox next to the instance Name. Choose Instance state and choose Terminate instance. Choose Terminate. 
+![vgBOJqw6TMyATiasOizM8g_8d882217f0044106a24b7d6c69549207_image-11-](https://user-images.githubusercontent.com/72511276/178268333-828b22a6-d2cc-4942-a8c9-ff8fe7478eff.png)
+
+> When you launch an instance, it enters the `pending state (1)`. 
+- When the instance is pending, billing has not started. 
+- At this stage, the instance is preparing to enter the running state. 
+- Pending is where AWS performs all actions needed to set up an instance, such as copying the AMI content to the root device and allocating the necessary networking components.
+
+> When your instance is running (2).
+- It's ready to use. This is also the stage where billing begins. As soon as an instance is running, you are then able to take other actions on the instance, such as reboot, terminate, stop, and stop-hibernate.
+
+When you reboot an instance (3), it’s different than performing a stop action and then a start action. Rebooting an instance is equivalent to rebooting an operating system. The instance remains on the same host computer and maintains its public and private IP address, and any data on its instance store.
+
+It typically takes a few minutes for the reboot to complete. When you stop and start an instance (4), your instance may be placed on a new underlying physical server. Therefore, you lose any data on the instance store that were on the previous host computer. When you stop an instance, the instance gets a new public IP address but maintains the same private IP address.
+
+When you terminate an instance (5), the instance store are erased, and you lose both the public IP address and private IP address of the machine. Termination of an instance means you can no longer access the machine.
+
+
+
+
+### Stopping a EC2 Instance
+
+![image](https://user-images.githubusercontent.com/72511276/178265838-ccdf948e-143f-4591-a90b-2a7cc72cc66c.png)
+
+
+- Back in the AWS Management Console, the employee-directory-app should still be selected. 
+- Now, choose Instance state at the top and choose Stop instance. 
+- Choose Stop. 
+- The Instance state will eventually go into the Stopped state. 
+
+![image](https://user-images.githubusercontent.com/72511276/178266104-bd49a3dd-79d5-41fe-9137-9904be5c8a5c.png)
+
+- Next, you will terminate the instance. 
+- Again, select the checkbox next to the instance Name. 
+- Choose Instance state and choose Terminate instance. Choose Terminate. 
+
+![image](https://user-images.githubusercontent.com/72511276/178266376-abbdc283-9594-48aa-bd44-fad683ff21b3.png)
+
 
 
 ### Stage-3 Creating a VPC
@@ -573,9 +610,9 @@ FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 
 
 
-```
+
 - With this instance configure lanch the instance.
-- Wait till all the ststus checks are passed then.
+- Wait till all the status checks are passed then.
 
 ![image](https://user-images.githubusercontent.com/72511276/178263278-0e795344-fce9-4228-8a36-0b3578fbed41.png)
 
@@ -587,8 +624,21 @@ FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 - Right now, you will not be able to interact with it as it's not currently connected to a database. 
 
 
+### Stopping an EC2 Instance
 
+![image](https://user-images.githubusercontent.com/72511276/178264442-3b78cf4f-ff6b-4bb7-8b0c-95d54d723164.png)
 
+>Choose Instance state and `Stop instance`.
+>Choose Stop. 
+>The Instance state will eventually go into the `Stopped state`. 
+
+```
+As of now we have created a vpc and A EC2 instance which contains your flask app code embedded in the user data
+
+But we haven't connected our database and the s3 bucket to store info and images of the employes respectively.
+In the next stage i.e stage-4 we are going to create a S3 bucket 
+
+```
 ### Stage-4 Creating an S3 Bucket
 
 
