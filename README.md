@@ -426,6 +426,8 @@ To enable internet connectivity for your VPC, you need to create an internet gat
 
 ## About Route Table
 
+- A route table specifies how packets are forwarded between the subnets within your VPC, the internet, and your VPN connection.
+
 - The Main Route Table
   - When you create a VPC, AWS creates a route table called the main route table. A route table contains a set of rules, called routes, that are used to determine where network traffic is directed. AWS assumes that when you create a new VPC with subnets, you want traffic to flow between them. Therefore, the default configuration of the main route table is to allow traffic between all subnets in the local network. 
 There are two main parts to this route table.
@@ -449,18 +451,27 @@ There are two main parts to this route table.
     - As this is the private subnet we are `notgoing to route`the `igw` to this route table.
 
 ## public route table
+
+![image](https://user-images.githubusercontent.com/72511276/178185613-2c961c83-902f-429e-95c6-6c91123598fd.png)
+
 - Choose Route Tables at the left. 
 - Choose Create route table. 
-- Under Name tag, paste in app-routetable-public.
-- Under VPC, choose the app-vpc. Choose Create. 
+
+![image](https://user-images.githubusercontent.com/72511276/178185868-30350af5-9c37-4eaa-b83e-a04db6366c6c.png)
+
+- Under Name tag, paste in `app-routetable-public`.
+- Under VPC, choose the `app-vpc`. Choose Create. 
 - Choose Close. 
 
 ## private route table
 
 
 - Choose Create route table. 
-- Under Name tag, paste in app-routetable-private.
-- Under VPC, choose the app-vpc. Choose Create. 
+
+![image](https://user-images.githubusercontent.com/72511276/178186359-5e9f5c87-c900-49fb-96fc-344593004eb9.png)
+
+- Under Name tag, paste in `app-routetable-private`.
+- Under VPC, choose the `app-vpc`. Choose Create. 
 
 > As of now we have created the route tables we need to edit the routes and associate the subnets to  route tables
 
