@@ -246,22 +246,38 @@ An EC2 instance transitions between different states from the moment you create 
 ![vgBOJqw6TMyATiasOizM8g_8d882217f0044106a24b7d6c69549207_image-11-](https://user-images.githubusercontent.com/72511276/178268333-828b22a6-d2cc-4942-a8c9-ff8fe7478eff.png)
 
 > When you launch an instance, it enters the `pending state (1)`. 
+
 - When the instance is pending, billing has not started. 
 - At this stage, the instance is preparing to enter the running state. 
 - Pending is where AWS performs all actions needed to set up an instance, such as copying the AMI content to the root device and allocating the necessary networking components.
 
 > When your instance is running (2).
+
 - It's ready to use. This is also the stage where billing begins. As soon as an instance is running, you are then able to take other actions on the instance, such as reboot, terminate, stop, and stop-hibernate.
 
-When you reboot an instance (3), it’s different than performing a stop action and then a start action. Rebooting an instance is equivalent to rebooting an operating system. The instance remains on the same host computer and maintains its public and private IP address, and any data on its instance store.
+> When you reboot an instance (3).
 
-It typically takes a few minutes for the reboot to complete. When you stop and start an instance (4), your instance may be placed on a new underlying physical server. Therefore, you lose any data on the instance store that were on the previous host computer. When you stop an instance, the instance gets a new public IP address but maintains the same private IP address.
+- It’s different than performing a stop action and then a start action. 
+- Rebooting an instance is equivalent to rebooting an operating system. 
+- The instance remains on the same host computer and maintains its public and private IP address, and any data on its instance store.
 
-When you terminate an instance (5), the instance store are erased, and you lose both the public IP address and private IP address of the machine. Termination of an instance means you can no longer access the machine.
+It typically takes a few minutes for the reboot to complete.
+
+> When you stop and start an instance (4)
+
+- Your instance may be placed on a new underlying physical server. 
+- Therefore, you lose any data on the instance store that were on the previous host computer. 
+- When you stop an instance, the instance gets a new public IP address but maintains the same private IP address.
+
+> When you terminate an instance (5).
+
+- The instance store are erased, and you lose both the public IP address and private IP address of the machine. 
+- Termination of an instance means you can no longer access the machine.
 
 
-
-
+| Instance state | Description                   | Instance usage billing |
+|----------------|-------------------------------|------------------------|
+| pending        |  The instance is preparing to enter the running state. An instance enters the pending state when it launches for the first time, or when it is started after being in the stopped state                    | Not billed             |
 ### Stopping a EC2 Instance
 
 ![image](https://user-images.githubusercontent.com/72511276/178265838-ccdf948e-143f-4591-a90b-2a7cc72cc66c.png)
