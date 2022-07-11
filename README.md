@@ -545,12 +545,14 @@ As we have disscued earlier on how to lanch an instance in the default vpc now w
 
 - In this section we are going to configure instance to suit your requirements
 
+![image](https://user-images.githubusercontent.com/72511276/178259640-2435b752-8960-41a2-8147-873776a1e55b.png)
+
 - Next to Network choose the `app-vpc` from the list. 
 - Next to Subnet choose `Public Subnet 1` from the list. 
-
 - Next to Auto-assign Public IP choose Enable. 
-
 - Next to IAM role choose the S3DynamoDBFullAccessRole. 
+
+![image](https://user-images.githubusercontent.com/72511276/178260448-af80bb2f-a2d4-43d4-bb71-a2bfc7b5b34b.png)
 
 - Scroll down to Advanced Details. Paste in the following into the User data box:
 
@@ -569,23 +571,22 @@ export DYNAMO_MODE=on
 FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 ```
 
-![image](https://user-images.githubusercontent.com/72511276/178134179-7708f675-8257-44c4-82ba-cd71427559f6.png)
-- then click on next to add storage.
+
 
 ```
-Change the following line to match your region:
+- With this instance configure lanch the instance.
+- Wait till all the ststus checks are passed then.
 
-Note: You can find this at the top right next to your user name.  
+![image](https://user-images.githubusercontent.com/72511276/178263278-0e795344-fce9-4228-8a36-0b3578fbed41.png)
 
-export AWS_DEFAULT_REGION=<INSERT REGION HERE>
-Example:
+- In the instance Dashboard click on the `WEBAPP_INSTANCE` check box to open up the details tab, copy the Ipv4 Adress 
 
-Note: US West (Oregon) 
 
-export AWS_DEFAULT_REGION=us-east-1
+- Paste it into a new browser tab/window. 
+- You should see a Employee Directory placeholder.
+- Right now, you will not be able to interact with it as it's not currently connected to a database. 
 
-Note: You will modify this User Data script again to use your Amazon S3 bucket  in a later lab. For now, just leave the ${SUB_PHOTOS_BUCKET} in the script.
-```
+
 
 
 ### Stage-4 Creating an S3 Bucket
