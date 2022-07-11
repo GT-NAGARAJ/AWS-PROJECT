@@ -479,11 +479,16 @@ There are two main parts to this route table.
 ## Routing
 
 - Select the `app-routetable-public` from the list. 
-- 
-- Choose the Routes tab. 
+
+![image](https://user-images.githubusercontent.com/72511276/178188340-979ae4ba-02f9-4186-a160-92a06104dba2.png)
+
+- Choose the actions. 
 - Choose Edit routes. 
 - Choose Add route. 
-- For Destination, paste in 0.0.0.0/0. For Target choose Internet Gateway. 
+
+![image](https://user-images.githubusercontent.com/72511276/178188833-f6e5e8cf-aa5f-4758-b400-1351a6afa085.png)
+
+- For Destination, paste in `0.0.0.0/0.` For Target choose `Internet Gateway`. 
 - Choose the app-igw you set up in the VPC section. 
 - Select Save routes. 
 - Choose Close. 
