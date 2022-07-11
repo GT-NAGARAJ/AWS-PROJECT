@@ -235,7 +235,7 @@ Click on `Add tag` button to add a tag
 - Under the Details tab, copy down the Public IPv4 address. 
 
 Paste it into a new browser tab. You should see a Employee Directory placeholder. Right now you will not be able to interact with it as it's not currently connected to our DynamoDB database. 
-
+Explicit (i.e defined by the user ) 
 Congrats! You've successfully created an EC2 instance hosting the employee directory application. After you've finished looking around, it's time to stop and terminate your instance, so that you don't incur future costs. 
 
 
@@ -476,7 +476,7 @@ There are two main parts to this route table.
 > As of now we have created the route tables we need to edit the routes and associate the subnets to  route tables
 
 
-## Routing
+## Routing for public rt 
 
 - Select the `app-routetable-public` from the list. 
 
@@ -498,28 +498,94 @@ There are two main parts to this route table.
 
 > Now as we connecred the flow of internet to the app-routable-public we need to associate the routable to the subnets 
 
-## Subnet Associations
+## Subnet Associations for public rt
 
 In the Route table dashboard you will find the subnet association besides routes
 
 ![image](https://user-images.githubusercontent.com/72511276/178215039-3b68b555-71db-49fb-b74c-ff5c28d00aea.png)
 
-- Choose the Subnet Associations tab. 
+- Choose the Explicit (i.e defined by the user ) Subnet Associations tab. 
 - Choose Edit subnet associations. 
 
+![image](https://user-images.githubusercontent.com/72511276/178216180-751bf2d8-4442-465c-8ba3-661cd9ae01b6.png)
 
-- Select the 2 Public subnets (Public Subnet 1 & Public 1b) you created in the Subnet section. 
+- Select the 2 Public subnets (Public Subnet 1 & Public subnet 2) you created in the Subnet section. 
 - Choose Save. 
 
+## Subnet Associations for private rt
 
-- Deselect the app-routetable-public. 
-- Select the app-routetable-private from the list. 
+> As this is a private route table we didn't need to connect any internet i.e is `(igw)`
+
+- Deselect the `app-routetable-public`. 
+
+![image](https://user-images.githubusercontent.com/72511276/178216702-bf204550-490f-4de5-9f11-51e8640bd10e.png)
+
+- Select the `app-routetable-private` from the list. 
 - Choose the Subnet Associations tab. 
-- Choose Edit subnet associations. 
+- Choose Edit subnet associations.
+
+![image](https://user-images.githubusercontent.com/72511276/178216897-35c74dd7-e7f4-4b29-9194-7d22d05cf75c.png)
+
 - Select the 2 Private subnets (Private Subnet 1 & Private Subnet 2) you created in the Subnet section. 
 - Choose Save.
 
+---
+Now we have created the VPC the only thing left is to lanch the ec2 servers in this VPC 
 
+As we have disscued earlier on how to lanch an instance in the default vpc now we are going to lanch the instance in the VPC we created you can take a look at the EC2 Lanch in the previous section.
+
+
+### Lanching EC2 in our Own VPC 
+
+> Every Step follows the same except the stage - 3 `Configure Instance`
+
+> We are going to lanch our instance in the `app-vpc` in the `public subnet 1`
+
+3. Configure Instance
+
+- In this section we are going to configure instance to suit your requirements
+
+- Next to Network choose the `app-vpc` from the list. 
+- Next to Subnet choose `Public Subnet 1` from the list. 
+
+- Next to Auto-assign Public IP choose Enable. 
+
+- Next to IAM role choose the S3DynamoDBFullAccessRole. 
+
+- Scroll down to Advanced Details. Paste in the following into the User data box:
+
+```bash
+#!/bin/bash -ex
+wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/DEV-AWS-MO-GCNv2/FlaskApp.zip
+unzip FlaskApp.zip
+cd FlaskApp/
+yum -y install python3 mysql
+pip3 install -r requirements.txt
+amazon-linux-extras install epel
+yum -y install stress
+export PHOTOS_BUCKET=${SUB_PHOTOS_BUCKET}
+export AWS_DEFAULT_REGION=<us-east-1>
+export DYNAMO_MODE=on
+FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
+```
+
+![image](https://user-images.githubusercontent.com/72511276/178134179-7708f675-8257-44c4-82ba-cd71427559f6.png)
+- then click on next to add storage.
+
+```
+Change the following line to match your region:
+
+Note: You can find this at the top right next to your user name.  
+
+export AWS_DEFAULT_REGION=<INSERT REGION HERE>
+Example:
+
+Note: US West (Oregon) 
+
+export AWS_DEFAULT_REGION=us-east-1
+
+Note: You will modify this User Data script again to use your Amazon S3 bucket  in a later lab. For now, just leave the ${SUB_PHOTOS_BUCKET} in the script.
+```
 
 
 ### Stage-4 Creating an S3 Bucket
