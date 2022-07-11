@@ -278,6 +278,14 @@ It typically takes a few minutes for the reboot to complete.
 | Instance state | Description                   | Instance usage billing |
 |----------------|-------------------------------|------------------------|
 | pending        |  The instance is preparing to enter the running state. An instance enters the pending state when it launches for the first time, or when it is started after being in the stopped state                    | Not billed             |
+| running        | The instance is running and ready for use.                  | Billed             |
+| stopping      |  The instance is preparing to be stopped or stop-hibernated.                   | Not billed if preparing to stop
+
+Billed if preparing to hibernate           |
+| stopped        |  The instance is shut down and cannot be used. The instance can be started at any time.                    | Not billed             |
+| terminated      |  The instance has been permanently deleted and cannot be started.                   | Not billed             |
+
+
 ### Stopping a EC2 Instance
 
 ![image](https://user-images.githubusercontent.com/72511276/178265838-ccdf948e-143f-4591-a90b-2a7cc72cc66c.png)
