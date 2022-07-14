@@ -666,8 +666,11 @@ In the next stage i.e stage-4 we are going to create a S3 bucket
 
 - [Storage in AWS](#storage-in-aws)
 - [About S3 buckets](#about-s3-bucket)
-  - [Creating a S3 Bucket](#creating-the-subnets)
+  - [Creating a S3 Bucket](#creating-a-s3-bucket)
+   
 
+
+# Storage in AWS
 
 ### Stage-5 Creating a Dynamo Db Database
 
