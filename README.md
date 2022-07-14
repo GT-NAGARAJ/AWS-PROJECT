@@ -672,7 +672,77 @@ In the next stage i.e stage-4 we are going to create a S3 bucket
 
 # Storage in AWS
 
-### Stage-5 Creating a Dynamo Db Database
+There are three types of cloud storage: 
+1. Object
+2. File
+3. Block
+
+> Object storage -----Example : Amazon Simple Storage Service (S3)-------
+
+- Objects are stored in a flat structure instead of a hierarchy. 
+- Each object is a file with a unique identifier. This identifier, along with any additional metadata, is bundled with the data and stored.
+
+- Changing just one character in an object is more difficult than with block storage. 
+- When you want to change one character in a file, the entire file must be updated.
+
+- With object storage, you can store almost any type of data, and there is no limit to the number of objects stored, making it easy to scale. 
+- Object storage is generally useful when storing large data sets, unstructured files like media assets, and static assets, such as photos.
+
+ > File Storage ------ Example : Amazon Elastic File System  ( EFS )----------
+
+- File storage is ideal when you require centralized access to files that need to be easily shared and managed by multiple host computers. 
+- Typically, this storage is mounted onto multiple hosts and requires file locking and integration with existing file system communication protocols. 
+
+
+> Block Storage --------Example : Amazon Elastic Block Storage ( EBS )
+
+-  Block storage splits files into fixed-size chunks of data called blocks that have their own addresses. 
+-  Since each block is addressable, blocks can be retrieved efficiently. 
+-  when you want to change a character in a file, you just change the block, or the piece of the file, that contains the character. This ease of access is why block storage solutions are fast and use less bandwidth.
+- Since block storage is optimized for low-latency operations, it is a typical storage choice for high-performance enterprise workloads, such as databases or enterprise resource planning (ERP) systems, that require low-latency storage. 
+
+# About S3 buckets
+
+- Amazon S3 is an object storage service. Object storage stores data in a flat structure, using unique identifiers to look up objects when requested. 
+- An object is simply a file combined with metadata and that you can store as many of these objects as you’d like. All of these characteristics of object storage are also characteristics of Amazon S3. 
+- All objects you put inside a bucket are redundantly stored across multiple devices, across multiple Availability Zones. This level of redundancy is designed to provide Amazon S3 customers with `99.999999999% durability` and `99.99% availability` for objects over a given year.
+
+- In Amazon S3, you have to store your objects in containers called buckets. 
+- You can’t upload any object, not even a single photo, to S3 without creating a bucket first. 
+- When you create a bucket, you choose, at the very minimum, two things: 
+
+  - The bucket name  ( A bucket name should be unique across all AWS accounts )
+  - The AWS Region you want the bucket to reside in.
+- Everything in Amazon S3 is private by default. 
+
+- If you decide that you want everyone on the internet to see your photos, you can choose to make your buckets public.
+
+![KRgCnEr0RY-YApxK9HWPyQ_78588d339d804b78b26f905033288350_bucket2](https://user-images.githubusercontent.com/72511276/178994525-ebf54531-8cfd-46b0-a804-d82d00e4b3d9.jpeg)
+
+# Understand S3 Bucket Policies
+
+- S3 bucket policies are similar to IAM policies, in that they are both defined using the same policy language in a JSON format. 
+-  S3 bucket policies are only attached to buckets. S3 bucket policies specify what actions are allowed or denied on the bucket.
+- S3 Bucket policies can only be placed on buckets, and cannot be used for folders or objects. However, the policy that is placed on the bucket applies to every object in that bucket.
+
+
+# Storage Classes in S3?
+
+- When you upload an object to Amazon S3 and you don’t specify the storage class, you’re uploading it to the default storage class—often referred to as standard storage. 
+- S3 storage classes let you change your storage tier as your data characteristics change. 
+- For example, if you are now accessing your old photos infrequently, you may want to change the storage class those photos are stored in to save on costs.
+
+> There are six S3 storage classes. 
+
+1. Amazon S3 Standard
+2. Amazon S3 Intelligent-Tiering
+3. Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
+4. Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)
+5. Amazon S3 Glacier
+6. Amazon S3 Glacier Deep Archive
+
+# Creating a S3 Bucket
+
 
 ### Stage-6 Creating a Auto scaling Group
 
