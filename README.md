@@ -745,9 +745,16 @@ There are three types of cloud storage:
 
 - Search for S3 in the search bar at the top. Choose S3. 
 
+![image](https://user-images.githubusercontent.com/72511276/179155073-b782d0f3-6575-4e6e-8ebf-e547d9dd8834.png)
+
 - Choose Create bucket. 
 
+![image](https://user-images.githubusercontent.com/72511276/179155201-d7740956-41b1-4b08-a54e-93e73ae0cc83.png)
+
 - For the Bucket name `photo-bucket` then use your initials and a unique number.
+
+![image](https://user-images.githubusercontent.com/72511276/179155440-3117adc5-fbf1-48f7-817f-db7c8cb705f9.png)
+
 
 Example:
 
@@ -755,15 +762,50 @@ photo-bucket-al-007
 
 > Make sure the Region is the region where you have created the other services. Again, this can be found at the top right( choose : us-east-1a ). 
 
+> Leave everything as default then scroll down to create bucket.
+
 - Choose Create bucket.
 
+![image](https://user-images.githubusercontent.com/72511276/179155950-563e67bd-c3b0-4d6d-9d5e-fb6746e460fb.png)
+
 - Choose your newly created bucket by clicking on the name of your bucket. 
-- Choose Upload. 
+
+![image](https://user-images.githubusercontent.com/72511276/179156321-96c23e82-342e-4d62-9424-e32134aebe8e.png)
+
+- Choose Upload. ( You can also add folders )
+
+![image](https://user-images.githubusercontent.com/72511276/179156581-1b3bf25f-485b-49d1-aa74-c45dc7af5a9f.png)
+
 - Choose Add files. Choose a photo of your choice on your computer. 
+
+![image](https://user-images.githubusercontent.com/72511276/179157208-e58333e3-227b-4567-a6c7-be8939b79823.png)
+
 - Choose Upload.
+
+![image](https://user-images.githubusercontent.com/72511276/179157712-29381dcd-a63a-488f-bfca-888b94ec1dcf.png)
+
 - At the top, you should see Upload succeeded in green. Choose Exit.
 
+In order to access this file click on the object to open up its url
+
+![image](https://user-images.githubusercontent.com/72511276/179158105-89a8f651-34d0-4750-8cf0-6cdeadf6cd50.png)
+
+![image](https://user-images.githubusercontent.com/72511276/179158250-12fb9a36-8b21-46f9-9051-8e18dc1e2f4f.png)
+
+![image](https://user-images.githubusercontent.com/72511276/179158554-0aa4f743-6e6f-4352-ae70-eca593929cca.png)
+
+We can access the file using this open button as this accessed  from the user side (i.e Owner )
+
+But when you access this from the below URL you will find 
+
+![image](https://user-images.githubusercontent.com/72511276/179158927-30fda498-f514-45cf-83db-95e68b6aa9d4.png)
+
+![image](https://user-images.githubusercontent.com/72511276/179159099-29aeb130-36ab-4c0d-a4bf-7496880f4a3c.png)
+
+
 > Now we have created our bucket and uploaded a image in the bucket we need to access this image but as the default setting is set to private we can't access this files in order to access them we need to modify the S3 bucjet policies.
+
+
 
 ## Modify the S3 bucket policy
 
@@ -772,6 +814,7 @@ photo-bucket-al-007
 
 - Choose Edit. Paste in the following policy:
 
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -789,6 +832,8 @@ photo-bucket-al-007
         }
     ]
 }
+
+```
 
 ```
 Replace the <INSERT-BUCKET-NAME> value with your bucket name.
@@ -812,6 +857,7 @@ Now we have created your S3 object we need to delete them after they usage is do
 - Choose Delete. Confirm deletion by typing in the words permanently delete. 
 - Choose Delete objects. Choose Exit. 
 
+          
 ### Stage-6 Creating a Auto scaling Group
 
 ### Stage-7 Cleaning Up the Resources
