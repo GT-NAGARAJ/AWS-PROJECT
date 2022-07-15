@@ -741,8 +741,76 @@ There are three types of cloud storage:
 5. Amazon S3 Glacier
 6. Amazon S3 Glacier Deep Archive
 
-# Creating a S3 Bucket
+## Creating a S3 Bucket
 
+- Search for S3 in the search bar at the top. Choose S3. 
+
+- Choose Create bucket. 
+
+- For the Bucket name `photo-bucket` then use your initials and a unique number.
+
+Example:
+
+photo-bucket-al-007
+
+> Make sure the Region is the region where you have created the other services. Again, this can be found at the top right( choose : us-east-1a ). 
+
+- Choose Create bucket.
+
+- Choose your newly created bucket by clicking on the name of your bucket. 
+- Choose Upload. 
+- Choose Add files. Choose a photo of your choice on your computer. 
+- Choose Upload.
+- At the top, you should see Upload succeeded in green. Choose Exit.
+
+> Now we have created our bucket and uploaded a image in the bucket we need to access this image but as the default setting is set to private we can't access this files in order to access them we need to modify the S3 bucjet policies.
+
+## Modify the S3 bucket policy
+
+
+- Choose the Permissions tab. Scroll down to Bucket policy.
+
+- Choose Edit. Paste in the following policy:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3ReadAccess",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::<INSERT-ACCOUNT-NUMBER>:role/S3DynamoDBFullAccessRole"
+            },
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::<INSERT-BUCKET-NAME>",
+                "arn:aws:s3:::<INSERT-BUCKET-NAME>/*"
+            ]
+        }
+    ]
+}
+
+```
+Replace the <INSERT-BUCKET-NAME> value with your bucket name.
+
+Replace the <INSERT-ACCOUNT-NUMBER> value with your account number. This can be found by choosing your username at the top right and copying down the value next to My Account.
+
+```
+
+- Choose Save changes.
+
+> Now we have attached the policies to the s3 in a way that they going to have full access to the EC2,Dynamo-Db.
+
+> You can attach you s3 bucket to the EC2 using the user data we will do it later in the stage-6
+
+Now we have created your S3 object we need to delete them after they usage is done else that going to cost in the future.
+
+## Delete your object
+
+- Search for S3 in the search bar at the top. Choose S3. 
+- Select your employee-photo-bucket-. Select your object. 
+- Choose Delete. Confirm deletion by typing in the words permanently delete. 
+- Choose Delete objects. Choose Exit. 
 
 ### Stage-6 Creating a Auto scaling Group
 
