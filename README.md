@@ -857,7 +857,16 @@ Now we have created your S3 object we need to delete them after they usage is do
 - Choose Delete. Confirm deletion by typing in the words permanently delete. 
 - Choose Delete objects. Choose Exit. 
 
-          
+### Stage-5 Creating a Dynamo Db Database
+
+- [Database in AWS](#database-in-aws)
+  - [Different types of Databases](#different-types-of-databases)
+- [About Dynamodb Database](#about-dynamodb-database)
+  - [Creating a Dynamodb Database](#creating-a-dynamodb-database)
+   
+
+   
+
 ### Stage-6 Creating a Auto scaling Group
 
 ### Stage-7 Cleaning Up the Resources
