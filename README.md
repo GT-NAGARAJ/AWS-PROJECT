@@ -16,8 +16,9 @@ The only thing you need to perform this project is having a Amazon Account. If d
 - [Stage-3 Creating a VPC](#stage-3-creating-a-vpc)
 - [Stage-4 Creating an S3 Bucket](#stage-4-creating-an-s3-bucket)
 - [Stage-5 Creating a Dynamo Db Database](#stage-5-creating-a-dynamo-db-database)
-- [Stage-6 Creating a Auto scaling Group](#stage-6-creating-a-auto-scaling-group)
-- [Stage-7 Cleaning Up the Resources](#stage-7-cleaning-up-the-resources)
+- [Stage-6 Monitoring in AWS](#stage-6-monitoring-in-aws)
+- [Stage-7 Creating a Auto scaling Group](#stage-7-creating-a-auto-scaling-group)
+- [Stage-8 Cleaning Up the Resources](#stage-8-cleaning-up-the-resources)
 
 ### About the project
 ---
@@ -1019,9 +1020,6 @@ To connect the app to a database, you first need to create one! To do this, you'
 > As we have created our Dynamodb table we will alter this and add items to it through the `Employee directory application which will be running in the EC2 instance`
 after we have added any item we will again come back to the DynamoDB Dashboard to view the final table.
 
-
-### Stage-6 Creating a Auto scaling Group
-
-
-
-### Stage-7 Cleaning Up the Resources
+### Stage-6 Monitoring in AWS
+### Stage-7 Creating a Auto scaling Group
+### Stage-8 Cleaning Up the Resources
