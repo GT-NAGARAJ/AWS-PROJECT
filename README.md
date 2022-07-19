@@ -810,9 +810,13 @@ But when you access this from the below URL you will find
 ## Modify the S3 bucket policy
 
 
-- Choose the Permissions tab. Scroll down to Bucket policy.
+- In the s3 Dashboard Choose the Permissions tab. 
+- Scroll down to Bucket policy.
+- Choose Edit. 
 
-- Choose Edit. Paste in the following policy:
+![image](https://user-images.githubusercontent.com/72511276/179659151-715a6c8d-6731-4968-8f77-1c22a569e0e8.png)
+
+- Paste in the following policy:
 
 ```
 {
@@ -822,7 +826,7 @@ But when you access this from the below URL you will find
             "Sid": "AllowS3ReadAccess",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::<INSERT-ACCOUNT-NUMBER>:role/S3DynamoDBFullAccessRole"
+                "AWS": "arn:aws:iam::<INSERT-ACCOUNT-NUMBER>:role/<INSERT-THE-ROLE-CREATED-FOR-S3>"
             },
             "Action": "s3:*",
             "Resource": [
@@ -835,14 +839,21 @@ But when you access this from the below URL you will find
 
 ```
 
+
+
 ```
 Replace the <INSERT-BUCKET-NAME> value with your bucket name.
+
+Replace the <INSERT-THE-ROLE-CREATED-FOR-S3> value with the role we have created earier for the EC2 Application
 
 Replace the <INSERT-ACCOUNT-NUMBER> value with your account number. This can be found by choosing your username at the top right and copying down the value next to My Account.
 
 ```
 
 - Choose Save changes.
+
+![image](https://user-images.githubusercontent.com/72511276/179659676-264a7377-296b-4def-9bd8-1615b79c9742.png)
+
 
 > Now we have attached the policies to the s3 in a way that they going to have full access to the EC2,Dynamo-Db.
 
@@ -853,9 +864,23 @@ Now we have created your S3 object we need to delete them after they usage is do
 ## Delete your object
 
 - Search for S3 in the search bar at the top. Choose S3. 
-- Select your employee-photo-bucket-. Select your object. 
-- Choose Delete. Confirm deletion by typing in the words permanently delete. 
-- Choose Delete objects. Choose Exit. 
+- click on your bucket. 
+- Select your object. 
+- Choose Delete. 
+
+![image](https://user-images.githubusercontent.com/72511276/179660186-4cacfaa0-44bc-4209-b851-9a8af7483383.png)
+
+- Confirm deletion by typing in the words permanently delete. 
+- Choose Delete objects. 
+
+![image](https://user-images.githubusercontent.com/72511276/179660335-70e41c81-0dfb-4e0b-9f57-1f3d3bcaa95d.png)
+
+- Choose Exit. 
+
+> You can also delete the whole bucket but you need to empty it first in order to delete it.
+
+![image](https://user-images.githubusercontent.com/72511276/179659958-0a38c671-c3fa-49d1-a7bd-bb14ff64cdb1.png)
+
 
 ### Stage-5 Creating a Dynamo Db Database
 
@@ -938,19 +963,20 @@ The DB instance you choose affects how much processing power and memory it has. 
 ## About Dynamodb Database
 
 > What Is Amazon DynamoDB?
-Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. 
 
-DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. 
+- Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. 
 
-With DynamoDB, you can create database tables that can store and retrieve any amount of data and serve any level of request traffic. 
+- DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. 
 
-You can scale up or scale down your tables' throughput capacity without downtime or performance degradation. 
+- With DynamoDB, you can create database tables that can store and retrieve any amount of data and serve any level of request traffic. 
 
-You can use the AWS Management Console to monitor resource utilization and performance metrics.
+- You can scale up or scale down your tables' throughput capacity without downtime or performance degradation. 
 
-DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements,while maintaining consistent and fast performance. 
+- You can use the AWS Management Console to monitor resource utilization and performance metrics.
 
-All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
+- DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements,while maintaining consistent and fast performance. 
+
+- All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
 
 - Core Components of Amazon DynamoDB
   - In DynamoDB, tables, items, and attributes are the core components that you work with. 
@@ -970,18 +996,32 @@ To connect the app to a database, you first need to create one! To do this, you'
 
 - Search for DynamoDB in the search bar at the top. Choose DynamoDB.
 
+![image](https://user-images.githubusercontent.com/72511276/179660523-22efaa03-863b-47ef-b9d9-8dcf31133a91.png)
+
 - At the left choose Tables. Choose Create table. 
 
-- For the Table name paste in Employees. For the Primary key paste in id. 
+![image](https://user-images.githubusercontent.com/72511276/179660653-3dc848ad-9db2-4fe5-85f5-57ca2e1379c5.png)
 
-- Choose Create. 
+![image](https://user-images.githubusercontent.com/72511276/179660795-271b08df-8876-4167-bdb4-586c2492f14b.png)
+
+- For the Table name paste in `Employees`. 
+- For the Primary key paste in `id`. 
+- sort key is the second part of primary key for now we are not going to use the sort key 
+
+![image](https://user-images.githubusercontent.com/72511276/179661073-3bdb8190-4a77-467e-be1f-8f6cbd995c78.png)
+
+- Scroll down to Choose Create. 
+
+- After the some time your table will comes to active state.
+
+![image](https://user-images.githubusercontent.com/72511276/179661277-6c3077fe-df2d-4c6f-b7f3-7afa0a32219e.png)
 
 > As we have created our Dynamodb table we will alter this and add items to it through the `Employee directory application which will be running in the EC2 instance`
 after we have added any item we will again come back to the DynamoDB Dashboard to view the final table.
 
 
-
-
 ### Stage-6 Creating a Auto scaling Group
+
+
 
 ### Stage-7 Cleaning Up the Resources
