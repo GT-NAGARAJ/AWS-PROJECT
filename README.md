@@ -867,36 +867,38 @@ Now we have created your S3 object we need to delete them after they usage is do
    
 ## Database in AWS
 
-What Is a Relational Database?
-A relational database organizes data into tables. Data in one table can be linked to data in other tables to create relationships—hence, the relational part of the name.
+> What Is a Relational Database?
+ A relational database organizes data into tables. Data in one table can be linked to data in other tables to create relationships—hence, the relational part of the name.
 
-What Is a Relational Database Management System?
+> What Is a Relational Database Management System?
 A relational database management system (RDBMS) lets you create, update, and administer a relational database. Here are some common examples of relational database management systems:
 
-MySQL
+- MySQL
 
-PostgresQL
+- PostgresQL
 
-Oracle
+- Oracle
 
-SQL server
+- SQL server
 
-Amazon Aurora
+- Amazon Aurora
    
 ## Different types of Databases in aws
 
-What Is Amazon RDS?
-Amazon RDS enables you to create and manage relational databases in the cloud without the operational burden of traditional database management. For example, if you sell healthcare equipment and your goal is to be the number-one seller in the Pacific Northwest, building out a database doesn’t directly help you achieve that goal though having a database is necessary to achieve the goal.
+> What Is Amazon RDS?
+- Amazon RDS enables you to create and manage relational databases in the cloud without the operational burden of traditional database management.
+- For example, if you sell healthcare equipment and your goal is to be the number-one seller in the Pacific Northwest, building out a database doesn’t directly help you achieve that goal though having a database is necessary to achieve the goal.
  
-Amazon RDS helps you offload some of this unrelated work of creating and managing a database. You can focus on the tasks that differentiate your application, instead of infrastructure-related tasks such as provisioning, patching, scaling, and restoring.
+- Amazon RDS helps you offload some of this unrelated work of creating and managing a database.
+-  You can focus on the tasks that differentiate your application, instead of infrastructure-related tasks such as provisioning, patching, scaling, and restoring.
 
 Amazon RDS supports most of the popular relational database management systems, ranging from commercial options, open source options, and even an AWS-specific option. Here are the supported Amazon RDS engines. 
 
-Commercial: Oracle, SQL Server
+- Commercial: Oracle, SQL Server
 
-Open Source: MySQL, PostgreSQL, MariaDB
+- Open Source: MySQL, PostgreSQL, MariaDB
 
-Cloud Native: Amazon Aurora
+- Cloud Native: Amazon Aurora
 
 
 ## Entities of Amazon Relational Database Service
@@ -908,15 +910,24 @@ Their are huge pie of varities of databases to choose from.
 ![ZUAlGVg1QFiAJRlYNSBYwg_1bba2621dec849d98f072cc7670511bf_ccc0cfcb144d44cf2c539d7dddc55223_3297-e-7-a-1-f-2-c-9-4408-aa-66-1-fd-4161-f-1566](https://user-images.githubusercontent.com/72511276/179655252-baf05b2f-760c-4f54-8b0a-2bec13813389.jpeg)
 
 >  DB Instances
-Just like the databases that you would build and manage yourself, Amazon RDS is built off of compute and storage. The compute portion is called the DB (database) instance, which runs the database engine. Depending on the engine of the DB instance you choose, the engine will have different supported features and configurations. A DB instance can contain multiple databases with the same engine, and each database can contain multiple tables.
 
-Underneath the DB instance is an EC2 instance. However, this instance is managed through the Amazon RDS console instead of the Amazon EC2 console. When you create your DB instance, you choose the instance type and size. Amazon RDS supports three instance families.
+- Just like the databases that you would build and manage yourself, 
+- Amazon RDS is built off of compute and storage. The compute portion is called the DB (database) instance, which runs the database engine. 
+- Depending on the engine of the DB instance you choose, the engine will have different supported features and configurations. 
+- A DB instance can contain multiple databases with the same engine, and each database can contain multiple tables.
 
-Standard, which include general-purpose instances
+- Underneath the DB instance is an EC2 instance. However, this instance is managed through the Amazon RDS console instead of the Amazon EC2 console. 
+- When you create your DB instance, you choose the instance type and size. 
+- Amazon RDS supports three instance families.
 
-Memory Optimized, which are optimized for memory-intensive applications
+- Standard 
+  - which include general-purpose instances
 
-Burstable Performance, which provides a baseline performance level, with the ability to burst to full CPU usage.
+- Memory Optimized
+  -  which are optimized for memory-intensive applications
+
+- Burstable Performance
+  -  which provides a baseline performance level, with the ability to burst to full CPU usage.
 
 > DB instance size
 
@@ -926,33 +937,44 @@ The DB instance you choose affects how much processing power and memory it has. 
 
 ## About Dynamodb Database
 
-What Is Amazon DynamoDB?
-Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. 
+> What Is Amazon DynamoDB?
+Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. 
 
-With DynamoDB, you can create database tables that can store and retrieve any amount of data and serve any level of request traffic. You can scale up or scale down your tables' throughput capacity without downtime or performance degradation. You can use the AWS Management Console to monitor resource utilization and performance metrics.
+DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling. 
 
-DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance. All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
+With DynamoDB, you can create database tables that can store and retrieve any amount of data and serve any level of request traffic. 
 
-Core Components of Amazon DynamoDB
-In DynamoDB, tables, items, and attributes are the core components that you work with. A table is a collection of items, and each item is a collection of attributes. DynamoDB uses primary keys to uniquely identify each item in a table and secondary indexes to provide more querying flexibility. 
+You can scale up or scale down your tables' throughput capacity without downtime or performance degradation. 
+
+You can use the AWS Management Console to monitor resource utilization and performance metrics.
+
+DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements,while maintaining consistent and fast performance. 
+
+All of your data is stored on solid-state disks (SSDs) and is automatically replicated across multiple Availability Zones in an AWS Region, providing built-in high availability and data durability.
+
+- Core Components of Amazon DynamoDB
+  - In DynamoDB, tables, items, and attributes are the core components that you work with. 
+  - A table is a collection of items, and each item is a collection of attributes. 
+  - DynamoDB uses primary keys to uniquely identify each item in a table and secondary indexes to provide more querying flexibility. 
 
 The following are the basic DynamoDB components:
 
-Tables – Similar to other database systems, DynamoDB stores data in tables. A table is a collection of data. For example, see the example table called People that you could use to store personal contact information about friends, family, or anyone else of interest. You could also have a Cars table to store information about vehicles that people drive.
-
-Items – Each table contains zero or more items. An item is a group of attributes that is uniquely identifiable among all of the other items. In a People table, each item represents a person. For a Cars table, each item represents one vehicle. Items in DynamoDB are similar in many ways to rows, records, or tuples in other database systems. In DynamoDB, there is no limit to the number of items you can store in a table.
-
-Attributes – Each item is composed of one or more attributes. An attribute is a fundamental data element, something that does not need to be broken down any further. For example, an item in a People table contains attributes called PersonID, LastName, FirstName, and so on. For a Department table, an item might have attributes such as DepartmentID, Name, Manager, and so on. Attributes in DynamoDB are similar in many ways to fields or columns in other database systems.
+- Tables 
+- Items 
+- Attributes
 
 
 ## Creating a Dynamodb Database
 
 To connect the app to a database, you first need to create one! To do this, you'll use DynamoDB. 
 
-Search for DynamoDB in the search bar at the top. Choose DynamoDB.
-At the left choose Tables. Choose Create table. 
-For the Table name paste in Employees. For the Primary key paste in id. 
-Choose Create. 
+- Search for DynamoDB in the search bar at the top. Choose DynamoDB.
+
+- At the left choose Tables. Choose Create table. 
+
+- For the Table name paste in Employees. For the Primary key paste in id. 
+
+- Choose Create. 
 
 > As we have created our Dynamodb table we will alter this and add items to it through the `Employee directory application which will be running in the EC2 instance`
 after we have added any item we will again come back to the DynamoDB Dashboard to view the final table.
