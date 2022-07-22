@@ -17,8 +17,9 @@ The only thing you need to perform this project is having a Amazon Account. If d
 - [Stage-4 Creating an S3 Bucket](#stage-4-creating-an-s3-bucket)
 - [Stage-5 Creating a Dynamo Db Database](#stage-5-creating-a-dynamo-db-database)
 - [Stage-6 Monitoring in AWS](#stage-6-monitoring-in-aws)
-- [Stage-7 Creating a Auto scaling Group](#stage-7-creating-a-auto-scaling-group)
-- [Stage-8 Cleaning Up the Resources](#stage-8-cleaning-up-the-resources)
+- [Stage-7 Load Balancer](#stage-7-load-balancer)
+- [Stage-8 Creating a Auto scaling Group](#stage-8-creating-a-auto-scaling-group)
+- [Stage-9 Cleaning Up the Resources](#stage-9-cleaning-up-the-resources)
 
 ### About the project
 ---
@@ -1021,5 +1022,76 @@ To connect the app to a database, you first need to create one! To do this, you'
 after we have added any item we will again come back to the DynamoDB Dashboard to view the final table.
 
 ### Stage-6 Monitoring in AWS
-### Stage-7 Creating a Auto scaling Group
-### Stage-8 Cleaning Up the Resources
+
+- [Monitoring in AWS](#monitoring-in-aws)
+  - [About CloudWatch](#about-cloudwatch)
+  - [Creating a cloud watch alarm] (#creating-a-cloud-watch-alarm) 
+
+- When operating a website like the Employee Directory Application on AWS you may have questions like:
+
+  - How many people are visiting my site day to day?
+
+  - How can I track the number of visitors over time?
+
+  - How will I know if the website is having performance or availability issues?
+
+  - What happens if my Amazon Elastic Compute Cloud (EC2) instance runs out of capacity?
+
+  - Will I be alerted if my website goes down?
+
+You need a way to collect and analyze data about the operational health and usage of your resources. The act of collecting, analyzing, and using data to make decisions or answer questions about your IT resources and systems is called monitoring.
+ 
+> Monitoring enables you to have a near real-time pulse on your system and answer the questions listed above. You can use the data you collect to watch for operational issues caused by events like over-utilization of resources, application flaws, resource misconfiguration, or security-related events
+
+
+Monitoring gives you visibility into your resources, but the question now is, "Why is that important?" The following are some of the benefits of monitoring.
+
+- Respond to operational issues proactively before your end users are aware of them. 
+
+- Improve the performance and reliability of your resources.
+
+- Recognize security threats and events.
+
+- Make data-driven decisions for your business. 
+
+- Create more cost-effective solutions. 
+
+#### About CloudWatch
+
+ -  Amazon CloudWatch is a monitoring and observability service that collects data like those mentioned in this module. 
+ -  CloudWatch provides actionable insights into your applications, and enables you to respond to system-wide performance changes, optimize resource utilization, and get a unified view of operational health.This unified view is important. 
+
+#### You can use CloudWatch to:
+
+- Detect anomalous behavior in your environments.
+
+- Set alarms to alert you when something’s not right.
+
+- Visualize logs and metrics with the AWS Management Console.
+
+- Take automated actions like scaling.
+
+- Troubleshoot issues.
+
+- Discover insights to keep your applications healthy.
+
+
+
+### Stage-7 Load Balancer
+
+- [Load Balancer in AWS](#load-balancer-in-aws)
+  - [About Load Balancer](#about-load-balancer)
+  - [About Elastic Load Balancer](#about-elastic-load-balancer)
+  - [Creating a Elastic Load Balancer] (#creating-a-elastic-load-balancer) 
+  
+
+### Stage-8 Creating a Auto scaling Group
+
+- [Auto scaling group in AWS](#auto-scaling-group-in-aws)
+  - [About auto scaling group](#about-auto-scaling-group)
+  - [Creating a auto scaling group] (#creating-a-auto-scaling group) 
+
+### Stage-9 Cleaning Up the Resources
+
+
+  
