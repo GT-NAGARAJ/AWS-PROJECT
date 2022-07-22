@@ -1025,7 +1025,7 @@ after we have added any item we will again come back to the DynamoDB Dashboard t
 
 - [Monitoring in AWS](#monitoring-in-aws)
   - [About CloudWatch](#about-cloudwatch)
-  - [Creating a cloud watch alarm] (#creating-a-cloud-watch-alarm) 
+  - [Creating a cloud watch alarm](#creating-a-cloud-watch-alarm) 
 
 - When operating a website like the Employee Directory Application on AWS you may have questions like:
 
@@ -1082,14 +1082,102 @@ Monitoring gives you visibility into your resources, but the question now is, "W
 - [Load Balancer in AWS](#load-balancer-in-aws)
   - [About Load Balancer](#about-load-balancer)
   - [About Elastic Load Balancer](#about-elastic-load-balancer)
-  - [Creating a Elastic Load Balancer] (#creating-a-elastic-load-balancer) 
-  
+  - [Creating a Elastic Load Balancer](#creating-a-elastic-load-balancer) 
+ 
+## About Load Balancer
+
+What’s a Load Balancer?
+
+- Load balancing refers to the process of distributing tasks across a set of resources. In the case of the corporate directory application, the resources are EC2 instances that host the application, and the tasks are the different requests being sent. It’s time to distribute the requests across all the servers hosting the application using a load balancer.
+ 
+- To do this, you first need to enable the load balancer to take all of the traffic and redirect it to the backend servers based on an algorithm. 
+- The most popular algorithm is round-robin, which sends the traffic to each server one after the other.
+
+- Although it is possible to install your own software load balancing solution on EC2 instances,AWS provides a service for that called Elastic Load Balancing (ELB).
+
+
+
+## About Elastic Load Balancer
+
+
+- The ELB service provides a major advantage over using your own solution to do load balancing, in that you don’t need to manage or operate it.
+-  It can distribute incoming application traffic across EC2 instances as well as containers, IP addresses, and AWS Lambda functions.
+
+- The fact that ELB can load balance to IP addresses means that it can work in a hybrid mode as well, where it also load balances to on-premises servers.
+
+- ELB is highly available. The only option you have to ensure is that the load balancer is deployed across multiple Availability Zones.
+
+- In terms of scalability, ELB automatically scales to meet the demand of the incoming traffic. It handles the incoming traffic and sends it to your backend application.
+
+
+## Health check in ELB
+- Taking the time to define an appropriate health check is critical. Only verifying that the port of an application is open doesn’t mean that the application is working. It also doesn’t mean that simply making a call to the home page of an application is the right way either.
+ 
+> For example, the employee directory application depends on a database, and S3. 
+> The health check should validate all of those elements. One way to do that would be to create a monitoring webpage like “/monitor” that will make a call to the database to ensure it can connect and get data, and make a call to S3. Then, you point the health check on the load balancer to the “/monitor” page.
+
+![HAix_5anRTiIsf-WpyU4Ew_399d176189a7467795b6ffb2847106e8_healthCheck](https://user-images.githubusercontent.com/72511276/180415075-8beb7c22-7be3-4dd5-b494-11eae3e7e4a8.jpeg)
+
+## ELB Components
+
+# The ELB service is made up of three main components.
+
+- **Listeners**: The client connects to the listener. This is often referred to as client-side. To define a listener, a port must be provided as well as the protocol, depending on the load balancer type. There can be many listeners for a single load balancer.
+
+- **Target groups**: The backend servers, or server-side, is defined in one or more target groups. This is where you define the type of backend you want to direct traffic to, such as EC2 Instances, AWS Lambda functions, or IP addresses. Also, a health check needs to be defined for each target group.
+
+- **Rules**: To associate a target group to a listener, a rule must be used. Rules are made up of a condition that can be the source IP address of the client and a condition to decide which target group to send the traffic to.
+
+
+## Creating a Elastic Load Balancer
+
+1. In the EC2 console, on the left side panel under Load Balancing, choose Load Balancers.
+
+1. Choose Create Load Balancer. Choose Create under the Application Load Balancer.
+
+1. For the Name paste in app-elb. Under Availability Zones for the VPC, choose the app-vpc. Select both Availability Zones.
+
+1. Example: If you are in US West (Oregon) you would choose both us-west-2a and us-west-2b.
+
+1. Choose Select a subnet and choose Public Subnet 1 for the first AZ and Public Subnet 2 for the second AZ.
+
+1. Choose Next: Configure Security Groups. 
+
+1. Again choose Next: Configure Security Groups. Next to Assign a security group choose Create a new security group. Next to Security group name paste in load-balancer-sg. 
+
+1. Remove the existing rule by clicking on the X at the right.
+
+1. Choose Add Rule. For the Type choose HTTP. For Source choose Anywhere.
+
+1. Choose Next: Configure Routing. 
+
+1. Under Target group next to Name paste in app-target-group.
+
+1. Under Health checks expand Advanced health check settings. 
+
+1. Change the Healthy threshold to 2. Change the Unhealthy threshold to 5. 
+
+1. Change the Timeout to 30. Change the Interval to 40. Choose Next: Register Targets.
+
+1. Under Instances select the checkbox next to the employee-directory-app-lab7 instance and choose Add to registered.
+
+1. Choose Next: Review. Choose Create. Once it's successfully created choose Close.
+
+> Note: Wait for the State to change from provisioning to active. Refresh the page while you wait. 
+
+Select the app-elb and copy the DNS name and paste it into a notepad. Edit the DNS name to include an http:// in front of the URL, to look like the following: 
+
+http://app-elb-000000000.us-west-2.elb.amazonaws.com
+
+Copy the DNS name with http:// and paste it into a new browser tab or window. You should see the employee directory application.
+## Types of Elastic  Load Balancers
+
 
 ### Stage-8 Creating a Auto scaling Group
 
 - [Auto scaling group in AWS](#auto-scaling-group-in-aws)
   - [About auto scaling group](#about-auto-scaling-group)
-  - [Creating a auto scaling group] (#creating-a-auto-scaling group) 
+  - [Creating a auto scaling group](#creating-a-auto-scaling-group) 
 
 ### Stage-9 Cleaning Up the Resources
 
